@@ -1,0 +1,46 @@
+# Compiler and Directories
+CXX := g++
+SRC_DIR := src
+INC_DIR := $(SRC_DIR)/include
+OUT_DIR := out
+BIN_DIR := $(OUT_DIR)/bin
+
+# Flags
+CXXFLAGS := -Wall -Wextra -I./$(INC_DIR)
+LDFLAGS := 
+
+# Files
+SRCS := $(wildcard $(SRC_DIR)/*.cpp)
+TARGET := $(BIN_DIR)/{{ project }}
+
+# Default goal
+.DEFAULT_GOAL := build
+
+# Create output directory
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+# Build rule
+build: $(BIN_DIR)
+	@echo "\033[1;34m[Build]\033[0m"
+	@echo "$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET) $(LDFLAGS)"
+	@$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET) $(LDFLAGS)
+
+# Run the built binary
+run: build
+	@echo "\033[1;32m[Run]\033[0m"
+	@chmod +x $(TARGET)
+	@$(TARGET)
+
+# Clean build artifacts
+clean:
+	@echo "\033[1;31m[Clean]\033[0m"
+	@rm -rf $(OUT_DIR)
+
+# Full cycle
+all:
+	@echo "\033[1;35m[All: Clean -> Build -> Run -> Clean]\033[0m"
+	@$(MAKE) clean
+	@$(MAKE) run
+	@$(MAKE) clean
+
