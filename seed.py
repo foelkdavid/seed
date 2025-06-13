@@ -125,8 +125,6 @@ def main():
         success("Python virtual environment created in .venv/")
         print(f"{BLUE}To activate: source {project_name}/.venv/bin/activate{RESET}")
 
-<<<<<<< HEAD
-=======
     if template_type == "esp":
         ino_path = target_dir / "project.ino"
         final_ino = target_dir / f"{project_name}.ino"
@@ -134,7 +132,6 @@ def main():
             ino_path.rename(final_ino)
             success(f"Renamed sketch file to {final_ino.name}")
 
->>>>>>> 5101665905687328493c42dfb986ca81b16f0f6b
     success("Done.")
 
 if __name__ == "__main__":
