@@ -6,12 +6,18 @@ Small templating script that aids me in initializing my projects.
 `seed <type> <project>`
 
 
-Example:
+Examples:
 
-`seed c mycproject`
-`seed cpp mycproject`
-`seed c++ mycproject`
+```
+seed c mycproject
 
+seed cpp mycppproject
+
+seed c++ mycppproject
+
+seed python mypythonproject
+
+seed esp myespproject
 ## current templates
 - c
 - cpp/c++
