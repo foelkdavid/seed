@@ -1,9 +1,9 @@
-# seed
-Small templating script that aids me in initializing my projects.
+# 🪏 seed
+Small project initializer.
 
 ## usage
 
-`seed <type> <project>`
+`seed <type> <name>`
 
 
 Examples:
