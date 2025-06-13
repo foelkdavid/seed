@@ -114,6 +114,13 @@ def main():
     info(f"Initializing git repository in {project_name}/")
     subprocess.run(["git", "init"], cwd=str(target_dir), check=True)
 
+    if template_type == "python":
+        info("Creating virtual environment...")
+        subprocess.run([sys.executable, "-m", "venv", ".venv"], cwd=str(target_dir), check=True)
+        success("Python virtual environment created in .venv/")
+        print(f"{BLUE}To activate: source {project_name}/.venv/bin/activate{RESET}")
+
+
     success("Done.")
 
 if __name__ == "__main__":
