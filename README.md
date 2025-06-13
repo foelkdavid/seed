@@ -1,17 +1,35 @@
-# seed
-Small templating script that aids me in initializing my projects.
+# 🪏 seed
+Small project initializer.
 
 ## usage
 
-`seed <type> <project>`
+`seed <type> <name>`
 
 
-Example:
+Examples:
 
-`seed c mycproject`
-`seed cpp mycproject`
-`seed c++ mycproject`
+```bash
+seed c mycproject
+```
+
+```bash
+seed cpp mycppproject
+```
+
+```bash
+seed c++ mycppproject
+```
+
+```bash
+seed python mypythonproject
+```
+
+```bash
+seed esp myespproject
+```
 
 ## current templates
 - c
 - cpp/c++
+- python
+- esp -> defaults to esp32, but easily configurable via makefile
