@@ -15,3 +15,5 @@ Example:
 ## current templates
 - c
 - cpp/c++
+- python
+- esp -> defaults to esp32, but easily configurable via makefile

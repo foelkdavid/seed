@@ -1,0 +1,37 @@
+BOARD_FQBN := esp32:esp32:esp32
+PORT       := /dev/ttyUSB0
+SKETCH     := {{ project }}
+BAUD_RATE  := 115200
+
+# Watch all relevant source files recursively
+SRC_FILES := $(shell find . -type f \( -name '*.ino' -o -name '*.h' -o -name '*.cpp' \))
+
+# Default goal
+.DEFAULT_GOAL := build
+
+# Build the sketch
+build: $(SRC_FILES)
+	@echo "\033[1;34m[Arduino Build]\033[0m"
+	arduino-cli compile --fqbn $(BOARD_FQBN) --build-path ./build $(SKETCH).ino
+
+# Upload to board
+upload: build
+	@echo "\033[1;32m[Upload]\033[0m"
+	arduino-cli upload -p $(PORT) --fqbn $(BOARD_FQBN) --build-path ./build $(SKETCH).ino
+
+# Monitor serial output
+monitor:
+	@echo "\033[1;36m[Serial Monitor]\033[0m"
+	arduino-cli monitor -p $(PORT) -c baudrate=$(BAUD_RATE)
+
+# Clean compiled files
+clean:
+	@echo "\033[1;31m[Clean]\033[0m"
+	rm -rf ./build
+
+# Full cycle
+run:
+	@echo "\033[1;35m[All: Clean -> Build -> Upload]\033[0m"
+	@$(MAKE) upload
+	@$(MAKE) monitor
+
