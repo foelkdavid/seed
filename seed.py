@@ -48,6 +48,11 @@ def render_template_dir(template_path, output_path, context):
             src_file = Path(root) / file
             is_template = file.endswith(".j2")
             dest_file_name = file[:-3] if is_template else file
+
+            # Arduino special case: rename project.ino.j2 to <project>.ino
+            if dest_file_name == "project.ino":
+                dest_file_name = f"{context['project']}.ino"
+
             dest_file = dest_dir / dest_file_name
 
             if is_template:
@@ -120,8 +125,8 @@ def main():
         success("Python virtual environment created in .venv/")
         print(f"{BLUE}To activate: source {project_name}/.venv/bin/activate{RESET}")
 
-
     success("Done.")
 
 if __name__ == "__main__":
     main()
+
