@@ -1,5 +1,5 @@
 # 🪏 seed
-Small project initializer.
+Small, modular project initializer.
 
 ## usage
 
